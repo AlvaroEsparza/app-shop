@@ -16,12 +16,20 @@
                     @endif
 
                     You are logged in!
+                     <a href="{{ route('logout') }}" class="btn"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script >
-    console.log();
 </script>
 @endsection
