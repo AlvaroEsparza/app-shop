@@ -16,10 +16,7 @@ use App\ProductImage;
 $factory->define(ProductImage::class, function (Faker\Generator $faker) {
 
     return [
-            "name" => $faker->word,
-            "description" => $faker->sentence(10),
-            "long_text" => $faker->text,
-            "price" => $faker->randomFloat(2, 5, 150)
-            //'category_id'
+            "image" => $faker->imageUrl(250,250),
+            "product_id" => $faker->numberBetween(1 , 100)
     ];
 });

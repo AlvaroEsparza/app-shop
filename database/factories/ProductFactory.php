@@ -15,11 +15,12 @@ use App\Product;
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(Product::class, function (Faker\Generator $faker) {
 
+/*substr sustituir el último caracter que en este caso es el "." que nos develve la funcion sentence del factory */
     return [
-            "name" => $faker->word,
+            "name" => substr($faker->sentence(3),0,-1),
             "description" => $faker->sentence(10),
             "long_text" => $faker->text,
-            "price" => $faker->randomFloat(2, 5, 150)
-            //'category_id'
+            "price" => $faker->randomFloat(2, 5, 150),
+            'category_id'=> $faker->numberBetween(1,5)
     ];
 });

@@ -16,7 +16,7 @@ use App\Category;
 $factory->define(Category::class, function (Faker\Generator $faker) {
 
     return [
-            "name" => $faker->word,
+            "name" => ucfirst($faker->word),
             "description" => $faker->sentence(10),
             "image" => $faker->text
 
