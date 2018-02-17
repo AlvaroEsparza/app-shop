@@ -9,52 +9,12 @@
 
 <div class="main main-raised">
     <div class="container">
-        <div class="section text-center section-landing">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="title">¿Por qué App shop?</h2>
-                    <h5 class="description">Somos una empresa dedicada a la venta de articulos electrionicos especialmente TV Box.</h5>
-                </div>
-            </div>
-
-            <div class="features">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="info">
-                            <div class="icon icon-primary">
-                                <i class="material-icons">chat</i>
-                            </div>
-                            <h4 class="info-title">Atendemos dudas</h4>
-                            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info">
-                            <div class="icon icon-success">
-                                <i class="material-icons">verified_user</i>
-                            </div>
-                            <h4 class="info-title">Pago 100% seguro</h4>
-                            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info">
-                            <div class="icon icon-danger">
-                                <i class="material-icons">fingerprint</i>
-                            </div>
-                            <h4 class="info-title">Información privada</h4>
-                            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="section text-center">
             <h2 class="title">Listado Productos disponibles</h2>
 
             <div class="team">
                 <div class="row">
+                     <a href="/admin/products/create" class="btn btn-primary btn-round">Nuevo Producto</a>
                          <table class="table">
                             <thead>
                                 <tr>
@@ -76,8 +36,8 @@
                                     <td>{{$product->category->name}}</td>
                                     <td class="text-right">&dollar; {{$product->price}}</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="View Producto" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-info"></i>
+                                        <button type="button" rel="tooltip" title="Ver Producto" class="btn btn-info btn-simple btn-xs">
+                                            <i class=" material-icons"><i class="material-icons">info_outline</i></i>
                                         </button>
                                         <button type="button" rel="tooltip" title="Editar Producto" class="btn btn-success btn-simple btn-xs">
                                             <i class="fa fa-edit"></i>
@@ -90,6 +50,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{ $products->links() }}
                     </div>
                 </div>
             </div>
