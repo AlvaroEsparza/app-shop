@@ -18,6 +18,7 @@
     <!-- CSS Files -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="{{asset('css/material-kit.css')}}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}"/>
 
 </head>
 
@@ -101,5 +102,7 @@
 
     <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
     <script src="{{asset('js/material-kit.js')}}" type="text/javascript"></script>
+
+    <script src="{{asset('js/scripts.js')}}" type="text/javascript"></script>
 
 </html>
