@@ -23,10 +23,17 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
 	Route::get('/products/create', 'ProductController@create'); //formulario
 	Route::post('/products', 'ProductController@store'); //Registrar datos
 	Route::get('/products/edit/{id}', 'ProductController@edit'); //formulario
-	Route::post('/products/{id}/edit', 'ProductController@update'); //update datos
+	Route::post('/products/edit', 'ProductController@update'); //update datos
+	//Route::post('/products/{id}/edit', 'ProductController@update'); //update datos
 	//Route::get('/products/{id}/delete', 'ProductController@destroy'); //form liminar con get
 	Route::post('/products/{id}/delete', 'ProductController@destroy'); //form eliminar post
-	/*Route::post('/products/prueba/{id}', 'ProductController@prueba');*/
+
+	Route::post	('/products/prueba', 'prueba\PruebaController@update');
+
 	/*Route::resource(/prueba', 'prueba\PruebaController');*/
+
+	Route::get('/products/{id}/images', 'ImageController@index');
+	Route::post('/products/{id}/images', 'ImageController@store');
+	Route::post('/products/{id}/images', 'ImageController@destroy');
 });
 

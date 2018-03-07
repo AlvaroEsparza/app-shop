@@ -9,7 +9,7 @@ $('.edit').click(function(){
 	$.ajax({
 		  url: 'products/edit/'+id,
 		  data: id,
-		  Type: 'get',
+		  type: 'get',
 		   beforeSend: function () {
                        loaderOn();
 
@@ -20,7 +20,7 @@ $('.edit').click(function(){
                       $('#long_description_edit').text(data["long_text"]);
                       $('#description_edit').attr('value', data["description"]);
                       $('#id_edit').attr('value', data["id"]);
-                      $('#form_edit').attr('action', "/admin/products/"+data['id']+"/edit");
+                      /*$('#form_edit').attr('action', "/admin/products/"+data['id']+"/edit");*/
                       loaderOff();
                 },
                 fail: function(data){
@@ -44,22 +44,22 @@ loaderOff();
 
 
 //INTENTAR HACER  DE MANERA ASINCRONA LA EDICION//
- /*$.ajaxSetup({
 
-        headers: {
+function ajaxUrl(){
+  /*$("#EditGuard").click(function(e) e.preventDefault();
 
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-
-        }
-
-    });
-$("#EditGuard").click(function(e){
-e.preventDefault();
+*/
+event.preventDefault();
 var id=$('#id_edit').val();
+var token=$('#token').val();
+var name = $('#name_edit').val();
+var price = $('#price_edit').val();
+var long_text = $('#long_description_edit').val();
+var description = $('#description_edit').val();
        $.ajax({
-      Type: 'put',
-      url: 'prueba/'+id,
-      data:{id:id},
+      type: 'POST',
+      url: 'products/edit',
+      data:{'id':id,'_token':token, 'name':name, 'price':price, 'long_text': long_text, 'description': description},
        beforeSend: function () {
 
                        loaderOn();
@@ -75,7 +75,7 @@ var id=$('#id_edit').val();
 
   });
 
-});*/
+}
 
 
 function loaderOn(){

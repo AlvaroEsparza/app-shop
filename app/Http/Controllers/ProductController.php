@@ -53,7 +53,7 @@ class ProductController extends Controller
 
      public function edit(Request $request, $id)
     {
- 
+
         $product= Product::find($id);
         return response()->json( $product);
     }
@@ -75,13 +75,13 @@ class ProductController extends Controller
 
         $this->validate($request, $rules, $messages);*/
 
-        $product = Product::find($request->input('id_edit'));
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price= $request->input('price');
-        $product->long_text= $request->input('long_text');
+        $product = Product::find($request->id);
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price= $request->price;
+        $product->long_text= $request->long_text;
         if($product->save()){
-            return redirect('/admin/products');           
+            return response()->json(['data'=>"hecho"]);           
         }
 
         

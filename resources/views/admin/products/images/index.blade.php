@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bienvenido a App shop')
+@section('title', 'Imagenes de productos')
 @section('body-class', 'product-page')
 
 @section('content')
@@ -10,58 +10,12 @@
 <div class="main main-raised">
     <div class="container">
         <div class="section text-center">
-            <h2 class="title">Listado Productos disponibles</h2>
+            <h2 class="title">Imagenes de productos seleccionado</h2>
 
             <div class="team">
                 <div class="row">
                      <a href="/admin/products/create" class="btn btn-primary btn-round">Nuevo Producto</a>
-                         <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">id</th>
-                                    <th class="text-center col-md-2">Nombre</th>
-                                    <th class="text-center col-md-5">Descripción</th>
-                                    <th class="text-center">Categoría</th>
-                                    <th class="text-right">Precio</th>
-                                    <th class="text-right text-center">Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            @foreach($products as $product)
-                                <tr>
-                                    <td class="text-center">{{$product->id}}</td>
-                                    <td>{{$product->name}}</td>
-                                    <td class="col-md-3">{{$product->description}}</td>
-                                    <td>{{$product->category ? $product->category->name: 'No definida'}}</td>
-                                    <td class="text-right">&dollar;{{$product->price}}</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Ver Producto" class="btn btn-info btn-simple btn-xs">
-                                            <i class=" material-icons"><i class="material-icons">info_outline</i></i>
-                                        </button>
-
-                                        <button id="{{$product->id}}" class="edit btn btn-success btn-simple btn-xs" rel="tooltip" title="Editar Producto" data-toggle="modal" data-target="#myModal">
-                                            <i class="fa fa-edit"></i>
-                                            <div class="ripple-container"></div>
-                                        </button>
-                                         <a rel="tooltip" title="Ver Producto" class="btn btn-warning btn-simple btn-xs">
-                                            <i class="fa fa-image"></i>
-                                        </a>
-                                        <!--<a href="{{url('/admin/products/'.$product->id.'/edit/')}}" type="button" rel="tooltip" title="Editar Producto" class="btn btn-success btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </a>-->
-                                        <form method="post" action="{{url('/admin/products/'.$product->id.'/delete')}}" style="display:inline">
-                                        {{csrf_field()}}
-                                            <button type="submit" rel="tooltip" title="Eliminar producto" class="btn btn-danger btn-simple btn-xs">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        {{ $products->links() }}
+ 
                     </div>
                 </div>
             </div>
@@ -168,7 +122,7 @@
 
                         <div class="row">
                             <div class="col-sm-2 col-sm-offset-3">
-                                 <button id="EditGuard" onclick="ajaxUrl();" class="btn btn-primary">Guardar cambios</button>                            
+                                 <button id="EditGuard" type ="submit" class="btn btn-primary">Guardar cambios</button>                            
                          </div>
                          <div class="col-sm-2 col-sm-offset-1">
                                  <a href="{{url('/admin/products')}}" type ="submit" class="btn btn-default">Cancelar</a>                            
