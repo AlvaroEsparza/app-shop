@@ -11,7 +11,7 @@ class ImageController extends Controller
 {
      public function index($id)
     {
-        $products = Product::find($id);
+        $product = Product::find($id);
         $images = $product->images;
     	return view('admin.products.images.index')->with(compact('product', 'images'));
     }

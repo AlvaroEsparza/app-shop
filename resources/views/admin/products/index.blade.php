@@ -44,7 +44,7 @@
                                             <i class="fa fa-edit"></i>
                                             <div class="ripple-container"></div>
                                         </button>
-                                         <a rel="tooltip" title="Ver Producto" class="btn btn-warning btn-simple btn-xs">
+                                         <a href="{{url('/admin/products/'.$product->id.'/images')}}" rel="tooltip" title="Ver imagenes" class="btn btn-warning btn-simple btn-xs">
                                             <i class="fa fa-image"></i>
                                         </a>
                                         <!--<a href="{{url('/admin/products/'.$product->id.'/edit/')}}" type="button" rel="tooltip" title="Editar Producto" class="btn btn-success btn-simple btn-xs">

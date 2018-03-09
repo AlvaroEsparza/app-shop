@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\ProductImage;
+use Validator;
 
 class ProductController extends Controller
 {
@@ -36,6 +37,7 @@ class ProductController extends Controller
         ];
 
         $this->validate($request, $rules, $messages);
+     
         $product = new Product();
         $product->name = $request->input('name');
         $product->description = $request->input('description');
@@ -60,7 +62,7 @@ class ProductController extends Controller
 
      public function update(Request $request)
     {
-        /*$messages=[
+        $messages=[
             'name.required' => 'El nombre es obligatorio',
             'name.min' => 'El nombre tiene que tener un minimo de 3 caracteres',
             'description.required' => 'Es necesario agregar una descripción',
@@ -73,20 +75,25 @@ class ProductController extends Controller
             'price'=>'required|numeric|min:0',
         ];
 
-        $this->validate($request, $rules, $messages);*/
+         $validator = Validator::make($request->all(), $rules,$messages);
+  
+         if (!$validator->fails()) {
+
 
         $product = Product::find($request->id);
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price= $request->price;
         $product->long_text= $request->long_text;
-        if($product->save()){
-            return response()->json(['data'=>"hecho"]);           
+            if($product->save()){
+                return response()->json(['data'=>"hecho"]);           
+            }else{
+                return response()->json(['data'=>"Algo Salio mal"]);
+            }
         }
-
+        return response()->json(['errors'=> $validator->messages()]);
         
     }
-
     public function destroy($id)
     {
         $product = Product::find($id);
@@ -108,6 +115,17 @@ class ProductController extends Controller
         $name= $request->name;
         
         return response()->json($name);
+    }
+
+
+//metodo sobre escrito como prueba
+    public function validate(Request $request, array $rules, array $messages = [], array $customAttributes = [])
+    {
+        $validator = $this->getValidationFactory()->make($request->all(), $rules, $messages, $customAttributes);
+
+        if ($validator->fails()) {
+            return response()->json(['data'=>'nada']);
+        }
     }
 
     
