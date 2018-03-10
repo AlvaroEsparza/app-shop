@@ -70,7 +70,7 @@
                 @foreach($products as $product)
                         <div class="col-md-4">
                         <div class="team-player">
-                            <img src="{{ $product->images()->first()->image}}" alt="Imagen de producto" class="img-raised img-circle">
+                            <img src="{{ $product->featured_image_url}}" alt="Imagen de producto" class="img-raised img-circle" with="300" height="170">
                             <h4 class="title">{{$product->name}} <br />
                                 <small class="text-muted">{{$product->category->name}}</small>
                             </h4>

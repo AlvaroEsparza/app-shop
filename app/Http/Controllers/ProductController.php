@@ -86,12 +86,12 @@ class ProductController extends Controller
         $product->price= $request->price;
         $product->long_text= $request->long_text;
             if($product->save()){
-                return response()->json(['data'=>"hecho"]);           
-            }else{
-                return response()->json(['data'=>"Algo Salio mal"]);
+                return response()->json(['menssages'=>["correct"=>"Los datos se guardaron correctamente"], 'status'=>'check','alert_type'=>'alert-success']);           
+            }else{ 
+                return response()->json(['menssages'=>["warning"=>"Los datos se guardaron correctamente"], 'status'=>'warning','alert_type'=>'alert-warning']);
             }
         }
-        return response()->json(['errors'=> $validator->messages()]);
+        return response()->json(['menssages'=> $validator->messages(), 'status'=>'error_outline','alert_type'=>'alert-danger']);
         
     }
     public function destroy($id)

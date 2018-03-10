@@ -66,7 +66,9 @@ var description = $('#description_edit').val();
 
                 },
                 success:  function (data) {
-                      console.log(data);
+                  console.log(data.menssage);
+                  menssageResponse(data.menssages, data.status, data.alert_type)
+                  
                       loaderOff();
                 },
                 fail: function(data){
@@ -87,4 +89,21 @@ function loaderOff(){
   $('input, #EditGuard, form a').removeAttr('disabled');
 	$('#loader').css({'display':'none'});
 
+}
+
+function menssageResponse(menssages, status, alert_type){
+  $('#menssage').addClass(alert_type);
+  $('#icon-menssage').text(status);
+  console.log(menssages);
+  $.each( menssages, function( key, value ) {
+  $('#menssage_body').append("<li>"+value+"</li>");
+    });
+  $('#menssage').css({'display':'block'});
+
+    setTimeout(function(){
+        $('#menssage').css({'display':'none'});
+        $('#menssage').removeClass(alert_type);
+        $('#menssage_body li').remove();
+
+    },7000);
 }

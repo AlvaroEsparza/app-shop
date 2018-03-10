@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\ProductImage;
+use File;
 
 
 class ImageController extends Controller
@@ -16,15 +17,41 @@ class ImageController extends Controller
     	return view('admin.products.images.index')->with(compact('product', 'images'));
     }
 
-     public function store()
+     public function store(Request $request)
     {
-        $products = Product::paginate(10);
-    	return view('admin.products.index')->with(compact('products'));
+    	//guardar imagen en el servidor
+        $file = $request->file('photo');
+        $path = public_path(). '/images/products';
+        $fileName = uniqid(). str_replace(" ","_",$file->getClientOriginalName());
+        $moved = $file->move($path, $fileName);
+
+        //agregar imagen a la base de datos (tabla produc_image)
+        if($moved){
+	        $productImage = new ProductImage();
+	        $productImage->image=$fileName;
+	        //$product->feature=; no es necesario ya que por defecto es false
+	        $productImage->product_id = $id;
+	        $productImage->save();
+    	}
+        return back();
+
     }
 
-     public function destroy()
+     public function destroy(Request $request)
     {
-        $products = Product::paginate(10);
-    	return view('admin.products.index')->with(compact('products'));
+        //elminar archivo
+        $productImage = ProductImage::find($request->input('image_id'));
+        if(substr($productImage->image,0,4) == "http"){
+    		$deleted = true;
+    	}else{
+    		$fullPath = public_path()."/images/products/".$productImage->image;
+    		$deleted = File::delete($fullPath);
+    	}
+
+    	if($deleted){
+    		$productImage->delete();
+    	}
+
+    	return back();
     }
 }

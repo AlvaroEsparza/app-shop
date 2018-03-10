@@ -121,15 +121,19 @@
                 <h4 class="modal-title">Editar "{{$product->name}}"</h4>
             </div>
             <div class="modal-body">
-             @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                    </ul>
+             <div class="alert" id="menssage">
+                <div class="container-fluid">
+                  <div class="alert-icon">
+                    <i class="material-icons" id="icon-menssage">check</i>
+                  </div>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                  </button>
+                  <ul clas="text-center" id="menssage_body">
+                      
+                  </ul>
                 </div>
-             @endif
+            </div>
             <div id="loader"></div>
                <form id="form_edit" method="post" action="">
                         {{csrf_field()}}

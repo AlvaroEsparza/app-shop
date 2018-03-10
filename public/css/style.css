@@ -1,4 +1,6 @@
-
+#menssage{
+  display: none;
+}
 #loader {
   position: absolute;
   left: 50%;
