@@ -79,6 +79,35 @@ var description = $('#description_edit').val();
 
 }
 
+function favorite(image,product){
+  event.preventDefault();
+  console.log(image, product);
+
+         $.ajax({
+        type: 'GET',
+        url: '/admin/products/images/selectFav/',
+        data:{'id_image':image,'id_product':product},
+         beforeSend: function () {
+
+                         
+                  },
+                  success:  function (data) {
+                    $('.btn-favorite').removeClass('btn-info');
+                    $('.btn-favorite').addClass('btn-primary');
+                    $('#favorite_'+image).removeClass('btn-primary');
+                    $('#favorite_'+image).addClass('btn-info');
+                    
+                        
+                  },
+                  fail: function(data){
+                    console.log('error');
+                  }
+
+    });
+
+
+}
+
 
 function loaderOn(){
   $('input, #EditGuard, form a').attr('disabled','disabled');
@@ -105,5 +134,5 @@ function menssageResponse(menssages, status, alert_type){
         $('#menssage').removeClass(alert_type);
         $('#menssage_body li').remove();
 
-    },7000);
+    },9000);
 }

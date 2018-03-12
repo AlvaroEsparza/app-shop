@@ -31,7 +31,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
 	Route::post	('/products/prueba', 'prueba\PruebaController@update');
 
 	/*Route::resource(/prueba', 'prueba\PruebaController');*/
-	Route::get('/products/{id}/images/selectFav/{image}', 'ImageController@selectFav');
+	Route::get('/products/images/selectFav/', 'ImageController@selectFav');
 	Route::get('/products/{id}/images', 'ImageController@index');
 	Route::post('/products/{id}/images', 'ImageController@store');
 	Route::delete('/products/{id}/images', 'ImageController@destroy');

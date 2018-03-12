@@ -27,10 +27,11 @@
                                 <form method="post" action="" >
                                     {{csrf_field()}}
                                     {{ method_field('DELETE')}}
-                                    <input type="hidden" name="image_id" value="{{$image->id}}">
+                                    <input type="hidden" id="image_id" name="image_id" value="{{$image->id}}">
+                                    <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
                                     <button type="submit" class="btn btn-danger btn-round">Eliminar imagen</button>
 
-                                    @if($image->featured)
+                                   <!-- @if($image->featured)
                                         <button class="btn btn-info btn-fab btn-fab-mini btn-round" rel="tooltip" title="imagen destacada">
                                             <i class="material-icons">favorite</i>
                                         </button>
@@ -38,8 +39,18 @@
                                         <a href="{{url('/admin/products/'.$product->id.'/images/selectFav/'.$image->id)}}" class="btn btn-primary btn-fab btn-fab-mini btn-round">
                                             <i class="material-icons">favorite</i>
                                         </a>
+                                    @endif-->
+                                    @if($image->featured)
+                                      <button type="button" id="favorite_{{$image->id}}" class="btn btn-info btn-fab btn-fab-mini btn-round btn-favorite" onclick="favorite({{$image->id}},{{$product->id}})">
+                                            <i class="material-icons">favorite</i>
+                                        </button>
+                                     @else
+                                         <button type="button" id="favorite_{{$image->id}}" class="btn btn-primary btn-fab btn-fab-mini btn-round btn-favorite" onclick="favorite({{$image->id}},{{$product->id}})">
+                                                <i class="material-icons">favorite</i>
+                                        </button>
                                     @endif
                                 </form>
+                              
                             </div>
                         </div>
                     </div>

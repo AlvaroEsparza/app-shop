@@ -18,7 +18,7 @@ class ImageController extends Controller
     	return view('admin.products.images.index')->with(compact('product', 'images'));
     }
 
-     public function store(Request $request)
+     public function store(Request $request,$id)
     {
     	//guardar imagen en el servidor
         $file = $request->file('photo');
@@ -56,15 +56,15 @@ class ImageController extends Controller
     	return back();
     }
 
-    public function selectFav($id,$image){
-        ProductImage::where('product_id', $id)->update([
+    public function selectFav(Request $request/*$id,$image*/){
+        ProductImage::where('product_id', $request->id_product)->update([
             'featured' => false
             ]);
 
-        $productImage = ProductImage::find($image);
+        $productImage = ProductImage::find($request->id_image);
         $productImage->featured = true;
         $productImage->save();
 
-        return back();
+        return response()->json(['data'=>'completado']);
     }
 }
