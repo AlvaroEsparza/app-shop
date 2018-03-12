@@ -66,7 +66,6 @@ var description = $('#description_edit').val();
 
                 },
                 success:  function (data) {
-                  console.log(data.menssage);
                   menssageResponse(data.menssages, data.status, data.alert_type)
                   
                       loaderOff();
@@ -135,4 +134,10 @@ function menssageResponse(menssages, status, alert_type){
         $('#menssage_body li').remove();
 
     },9000);
+}
+function alertEliminar(image,product){
+        $('#image_id_modal').val(image);
+         $('#product_id_modal').val(product);
+        $("#ModalEliminar").modal("toggle");
+  
 }

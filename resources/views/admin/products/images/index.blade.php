@@ -27,9 +27,7 @@
                                 <form method="post" action="" >
                                     {{csrf_field()}}
                                     {{ method_field('DELETE')}}
-                                    <input type="hidden" id="image_id" name="image_id" value="{{$image->id}}">
-                                    <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" class="btn btn-danger btn-round">Eliminar imagen</button>
+                                    <button onclick="alertEliminar({{$image->id}},{{$product->id}})" type="button" class="btn btn-danger btn-round">Eliminar imagen</button>
 
                                    <!-- @if($image->featured)
                                         <button class="btn btn-info btn-fab btn-fab-mini btn-round" rel="tooltip" title="imagen destacada">
@@ -62,6 +60,35 @@
     </div>
 
 </div>
+
+<!-- Modal -->
+  <div class="modal fade" id="ModalEliminar" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">¿Estas seguro?</h4>
+        </div>
+        <div class="modal-body">
+          <p>Se eliminara la imagen </p>
+        </div>
+        <div class="modal-footer">
+             <form method="post" action="" >
+                                    {{csrf_field()}}
+                                    {{ method_field('DELETE')}}
+                                    <input type="hidden" id="image_id_modal" name="image_id" value="">
+                                    <input type="hidden" id="product_id_modal" name="product_id" value="">
+                                    <button type="submit" class="btn btn-danger">Aceptar</button>
+
+                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 @include('includes.footer')
 
