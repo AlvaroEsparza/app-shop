@@ -78,18 +78,14 @@ var description = $('#description_edit').val();
 
 }
 
+//Boton para mostrar como imagen principal de manera asincrona
 function favorite(image,product){
   event.preventDefault();
-  console.log(image, product);
 
          $.ajax({
         type: 'GET',
         url: '/admin/products/images/selectFav/',
         data:{'id_image':image,'id_product':product},
-         beforeSend: function () {
-
-                         
-                  },
                   success:  function (data) {
                     $('.btn-favorite').removeClass('btn-info');
                     $('.btn-favorite').addClass('btn-primary');
@@ -101,10 +97,7 @@ function favorite(image,product){
                   fail: function(data){
                     console.log('error');
                   }
-
     });
-
-
 }
 
 
