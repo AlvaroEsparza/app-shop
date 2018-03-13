@@ -53,3 +53,7 @@
   display: none;
   text-align: center;
 }
+
+.btn-favorite:hover{
+  background-color:#03a9f4 !important;
+}

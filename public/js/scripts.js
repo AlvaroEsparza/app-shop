@@ -86,21 +86,25 @@ function favorite(image,product){
         type: 'GET',
         url: '/admin/products/images/selectFav/',
         data:{'id_image':image,'id_product':product},
+                    beforeSend: function(){
+                      botonFavorite(image);
+
+                    },
                   success:  function (data) {
-                    $('.btn-favorite').removeClass('btn-info');
-                    $('.btn-favorite').addClass('btn-primary');
-                    $('#favorite_'+image).removeClass('btn-primary');
-                    $('#favorite_'+image).addClass('btn-info');
+                      botonFavorite(image);
                     
                         
                   },
                   fail: function(data){
-                    console.log('error');
+                    $('#favorite_'+image).removeClass('btn-info');
+                    $('#favorite_'+image).addClass('btn-primary');
+                    alert('Algo salio mal');
                   }
     });
 }
 
 
+//loder
 function loaderOn(){
   $('input, #EditGuard, form a').attr('disabled','disabled');
 	$('#loader').css({'display':'block'});
@@ -111,6 +115,8 @@ function loaderOff(){
 	$('#loader').css({'display':'none'});
 
 }
+
+//mensaje de respuesta en el formulario de edicion
 
 function menssageResponse(menssages, status, alert_type){
   $('#menssage').addClass(alert_type);
@@ -128,9 +134,19 @@ function menssageResponse(menssages, status, alert_type){
 
     },9000);
 }
+
+//modal de alerta previo a eliminar imagen 
 function alertEliminar(image,product){
         $('#image_id_modal').val(image);
          $('#product_id_modal').val(product);
         $("#ModalEliminar").modal("toggle");
   
+}
+
+function botonFavorite(image){
+  $('.btn-favorite').removeClass('btn-info');
+  $('.btn-favorite').addClass('btn-primary');
+  $('#favorite_'+image).removeClass('btn-primary');
+  $('#favorite_'+image).addClass('btn-info');
+
 }
