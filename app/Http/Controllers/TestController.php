@@ -10,7 +10,7 @@ class TestController extends Controller
     public function welcome()
     {
     	
-    	$products = Product::paginate(20);
+    	$products = Product::paginate(9);
     	/*$varA=5;
     	$varB=7;
 

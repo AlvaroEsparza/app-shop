@@ -39,11 +39,11 @@
                                         </a>
                                     @endif-->
                                     @if($image->featured)
-                                      <button type="button" id="favorite_{{$image->id}}" class="btn btn-info btn-fab btn-fab-mini btn-round btn-favorite" onclick="favorite({{$image->id}},{{$product->id}})">
+                                      <button type="button" id="favorite_{{$image->id}}" class="btn btn-info btn-fab btn-fab-mini btn-round btn-favorite" data-toggle="tooltip" data-placement="top" title="Imagen destacada" onclick="favorite({{$image->id}},{{$product->id}})">
                                             <i class="material-icons">favorite</i>
                                         </button>
                                      @else
-                                         <button type="button" id="favorite_{{$image->id}}" class="btn btn-primary btn-fab btn-fab-mini btn-round btn-favorite" onclick="favorite({{$image->id}},{{$product->id}})">
+                                         <button type="button" id="favorite_{{$image->id}}" class="btn btn-primary btn-fab btn-fab-mini btn-round btn-favorite"  data-toggle="tooltip" data-placement="top" title="Destacar imagen" onclick="favorite({{$image->id}},{{$product->id}})">
                                                 <i class="material-icons">favorite</i>
                                         </button>
                                     @endif
@@ -60,7 +60,7 @@
     </div>
 
 </div>
-
+<div id="nada"></div>
 <!-- Modal -->
   <div class="modal fade" id="ModalEliminar" role="dialog">
     <div class="modal-dialog">

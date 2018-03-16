@@ -1,3 +1,21 @@
+.team .row .col-md-4{
+  margin-bottom: 4em;
+}
+
+/*hacer todas la columnas del mismo tamaño sin importar la descripción para los productos de la vista welcome*/
+.team .products-welcome{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.team .products-welcome > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+
 #menssage{
   display: none;
 }

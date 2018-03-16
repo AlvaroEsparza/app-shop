@@ -66,22 +66,20 @@
             <h2 class="title">Productos disponibles</h2>
 
             <div class="team">
-                <div class="row">
+                <div class="row products-welcome">
                 @foreach($products as $product)
-                        <div class="col-md-4">
+                    <div class="col-md-4">
                         <div class="team-player">
                             <img src="{{ $product->featured_image_url}}" alt="Imagen de producto" class="img-raised img-circle" with="300" height="170">
-                            <h4 class="title">{{$product->name}} <br />
+                            <h4 class="title"><a href="{{url('/products/'.$product->id)}}">{{$product->name}}</a> <br />
                                 <small class="text-muted">{{$product->category->name}}</small>
                             </h4>
                             <p class="description">{{$product->description}}</p>
-                            <a href="#pablo" class="btn btn-simple btn-just-icon"><i class="fa fa-twitter"></i></a>
-                            <a href="#pablo" class="btn btn-simple btn-just-icon"><i class="fa fa-instagram"></i></a>
-                            <a href="#pablo" class="btn btn-simple btn-just-icon btn-default"><i class="fa fa-facebook-square"></i></a>
+                            <a href="{{url('/products/'.$product->id)}}" class="btn btn-default btn-round">Ver producto</a>
                         </div>
-                        </div>
-                @endforeach
                     </div>
+              @endforeach
+                </div>
                      {{ $products->links() }}
                 </div>
             </div>

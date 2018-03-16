@@ -80,7 +80,7 @@ var description = $('#description_edit').val();
 
 //Boton para mostrar como imagen principal de manera asincrona
 function favorite(image,product){
-  event.preventDefault();
+
 
          $.ajax({
         type: 'GET',
@@ -88,10 +88,13 @@ function favorite(image,product){
         data:{'id_image':image,'id_product':product},
                     beforeSend: function(){
                       botonFavorite(image);
+                      //desaparecer tooltip al hacer click 
+                      $('.tooltip').removeClass('in');
 
                     },
                   success:  function (data) {
                       botonFavorite(image);
+
                     
                         
                   },
@@ -148,5 +151,10 @@ function botonFavorite(image){
   $('.btn-favorite').addClass('btn-primary');
   $('#favorite_'+image).removeClass('btn-primary');
   $('#favorite_'+image).addClass('btn-info');
+  $('.btn-favorite').attr('data-original-title', "Destacar Imagen");
+  $('.btn-favorite').attr('title', "Destacar Imagen");
+  $('#favorite_'+image).attr('title', "Imagen destacada");
+  $('#favorite_'+image).attr('data-original-title', "Imagen destacada");
+
 
 }
