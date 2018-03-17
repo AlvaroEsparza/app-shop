@@ -19,6 +19,7 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="{{asset('css/material-kit.css')}}" rel="stylesheet"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}"/>
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 
 </head>
 
@@ -109,5 +110,7 @@
     <script src="{{asset('js/material-kit.js')}}" type="text/javascript"></script>
 
     <script src="{{asset('js/scripts.js')}}" type="text/javascript"></script>
+
+     <script src="{{asset('js/dropzone.js')}}" type="text/javascript"></script>
 
 </html>

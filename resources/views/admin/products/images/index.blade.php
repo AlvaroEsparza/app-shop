@@ -11,12 +11,21 @@
     <div class="container">
         <div class="section text-center">
             <h2 class="title">Imagenes de productos "{{$product->name}}"</h2>
-            <form method="post" action="{{url('/admin/products/'.$product->id.'/images')}}" enctype="multipart/form-data">
+            <!--<form method="post" action="{{url('/admin/products/'.$product->id.'/images')}}" enctype="multipart/form-data" class="dropzone">
             {{csrf_field()}}
-                <input type="file" name="photo" required>
-                <button type="submit" class="btn btn-primary btn-round">Subir nueva imagen</button>
-                <a href="/admin/products" class="btn btn-default btn-round">Volver a listado de productos</a>
-            </form>
+                <div class="fallback">
+                    <input type="file" name="photo" required multiple >
+                  <button type="submit" class="btn btn-primary btn-round">Subir nueva imagen</button>
+                    <a href="/admin/products" class="btn btn-default btn-round">Volver a listado de productos</a>
+                </div>
+                </form>-->
+                <form action="{{url('/admin/products/'.$product->id.'/images')}}" class="dropzone" id="myDropzone">
+                {{csrf_field()}}
+                <div class="dz-default dz-message"><span>Arratra las imagenes o dale click</span></div>
+                    
+                </form>
+               
+            
                 <hr>
             <div class="row">
                 @foreach($images as $image)

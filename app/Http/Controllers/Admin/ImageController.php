@@ -23,8 +23,9 @@ class ImageController extends Controller
     {
     	//guardar imagen en el servidor
         $file = $request->file('photo');
+        $file= $request->file('file');
         $path = public_path(). '/images/products';
-        $fileName = uniqid(). str_replace(" ","_",$file->getClientOriginalName());
+        $fileName = $id."_".uniqid(). str_replace(" ","_",$file->getClientOriginalName());
         $moved = $file->move($path, $fileName);
 
         //agregar imagen a la base de datos (tabla produc_image)
@@ -35,7 +36,7 @@ class ImageController extends Controller
 	        $productImage->product_id = $id;
 	        $productImage->save();
     	}
-        return back();
+        return response()->json(['data'=>'cpmpletado', 'name_image'=>$productImage->image=$fileName]);
 
     }
 

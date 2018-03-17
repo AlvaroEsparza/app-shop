@@ -155,6 +155,5 @@ function botonFavorite(image){
   $('.btn-favorite').attr('title', "Destacar Imagen");
   $('#favorite_'+image).attr('title', "Imagen destacada");
   $('#favorite_'+image).attr('data-original-title', "Imagen destacada");
-
-
 }
+

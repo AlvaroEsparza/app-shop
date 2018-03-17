@@ -38,6 +38,7 @@ class ProductController extends Controller
         ];
 
         $this->validate($request, $rules, $messages);
+        /*Validator::make($request->all(), $rules,$messages);*/
      
         $product = new Product();
         $product->name = $request->input('name');
@@ -119,15 +120,15 @@ class ProductController extends Controller
     }
 
 
-//metodo sobre escrito como prueba
-    public function validate(Request $request, array $rules, array $messages = [], array $customAttributes = [])
+//metodo sobre escrito como prueba, si funciono
+   /* public function validate(Request $request, array $rules, array $messages = [], array $customAttributes = [])
     {
         $validator = $this->getValidationFactory()->make($request->all(), $rules, $messages, $customAttributes);
 
         if ($validator->fails()) {
             return response()->json(['data'=>'nada']);
         }
-    }
+    }*/
 
     
 
